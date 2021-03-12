@@ -23,7 +23,19 @@ object RecFun extends RecFunInterface {
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+    def loop(left: Int, right: Int, pair: Int, cs: List[Char]): Boolean = {
+      if (cs.isEmpty) (left == right) && (pair == left)
+      else if (cs.head == '(') loop(left + 1, right, pair, cs.tail)
+      else if (cs.head == ')') {
+        if (left >= right + 1) loop(left, right + 1, pair + 1, cs.tail)
+        else loop(left, right + 1, pair, cs.tail)
+      }
+      else loop(left, right, pair, cs.tail)
+    }
+
+    loop(0, 0, 0, chars)
+  }
 
   /**
    * Exercise 3
