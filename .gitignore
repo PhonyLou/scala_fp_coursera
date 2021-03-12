@@ -5,3 +5,4 @@
 *.conf
 */project/target
 */target
+.DS_Store
