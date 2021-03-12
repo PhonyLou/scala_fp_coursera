@@ -1,5 +1,3 @@
-package ch.epfl.lamp
-
 import sbt._
 import Keys._
 import scalafix.sbt.ScalafixPlugin.autoImport._

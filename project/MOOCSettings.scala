@@ -1,5 +1,3 @@
-package ch.epfl.lamp
-
 import sbt._
 import sbt.Keys._
 
