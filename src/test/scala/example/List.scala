@@ -1,6 +1,6 @@
 package example
 
-import example.List.sumLeft
+import example.List.{lengthLeft, productLeft, sumLeft}
 import org.junit.{Assert, Test}
 
 sealed trait List[+A]
@@ -59,6 +59,9 @@ object List {
 
   def sumLeft(xs: List[Int]) = foldLeft(xs, 0)(_ + _)
 
+  def productLeft(xs: List[Int]) = foldLeft(xs, 1)(_ * _)
+
+  def lengthLeft(xs: List[Int]) = foldLeft(xs, 0)((b, _) => b + 1)
 
 }
 
@@ -67,4 +70,15 @@ class ListSuit {
     val valueActual = sumLeft(Cons(1, Cons(2, Cons(3, Nil))))
     Assert.assertEquals(6, valueActual)
   }
+
+  @Test def `product left` = {
+    val valueActual = productLeft(Cons(1, Cons(2, Cons(3, Nil))))
+    Assert.assertEquals(6, valueActual)
+  }
+
+  @Test def `length left` = {
+    val valueActual = lengthLeft(Cons(1, Cons(2, Cons(3, Nil))))
+    Assert.assertEquals(3, valueActual)
+  }
+
 }
